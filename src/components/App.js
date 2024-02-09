@@ -32,10 +32,19 @@ function App() {
     setQuestions(questions.filter(question => question.id !== id));
   };
 
+  const handleUpdateCorrectIndex = (id, correctIndex) => {
+    setQuestions(questions.map(question => {
+      if (question.id === id) {
+        return { ...question, correctIndex };
+      }
+      return question;
+    }));
+  };
+
   return (
     <main>
       <AdminNavBar onChangePage={setPage} />
-      {page === "Form" ? <QuestionForm onNewQuestion={handleNewQuestion} /> : <QuestionList questions={questions} onDeleteQuestion={handleDeleteQuestion} />}
+      {page === "Form" ? <QuestionForm onNewQuestion={handleNewQuestion} /> : <QuestionList questions={questions} onDeleteQuestion={handleDeleteQuestion} onUpdateCorrectIndex={handleUpdateCorrectIndex} />}
     </main>
   );
 }

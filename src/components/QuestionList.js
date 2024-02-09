@@ -1,8 +1,6 @@
-// QuestionList.js
-
 import React from 'react';
 
-function QuestionList({ questions, onDeleteQuestion }) {
+function QuestionList({ questions, onDeleteQuestion, onUpdateCorrectIndex }) {
   const handleDelete = async (id) => {
     try {
       const response = await fetch(`http://localhost:4000/questions/${id}`, {
@@ -17,6 +15,22 @@ function QuestionList({ questions, onDeleteQuestion }) {
     }
   };
 
+  const handleCorrectIndexChange = async (id, correctIndex) => {
+    try {
+      const response = await fetch(`http://localhost:4000/questions/${id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ correctIndex })
+      });
+      if (!response.ok) {
+        throw new Error('Failed to update correct index');
+      }
+      onUpdateCorrectIndex(id, correctIndex);
+    } catch (error) {
+      console.error('Error updating correct index:', error);
+    }
+  };
+
   return (
     <div>
       <h2>Question List</h2>
@@ -24,6 +38,11 @@ function QuestionList({ questions, onDeleteQuestion }) {
         {questions.map(question => (
           <li key={question.id}>
             {question.prompt}
+            <select value={question.correctIndex} onChange={(e) => handleCorrectIndexChange(question.id, e.target.value)}>
+              {question.answers.map((answer, index) => (
+                <option key={index} value={index}>{answer}</option>
+              ))}
+            </select>
             <button onClick={() => handleDelete(question.id)}>Delete</button>
           </li>
         ))}

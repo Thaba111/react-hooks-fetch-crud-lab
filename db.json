@@ -9,7 +9,7 @@
         "key",
         "prop"
       ],
-      "correctIndex": 2
+      "correctIndex": "3"
     },
     {
       "id": 2,
@@ -20,7 +20,7 @@
         "props",
         "state"
       ],
-      "correctIndex": 1
+      "correctIndex": "0"
     },
     {
       "id": 3,
@@ -31,7 +31,7 @@
         "onChange",
         "onForm"
       ],
-      "correctIndex": 0
+      "correctIndex": "1"
     },
     {
       "id": 4,
@@ -42,7 +42,7 @@
         "Webpack",
         "ES6"
       ],
-      "correctIndex": 1
+      "correctIndex": "2"
     },
     {
       "id": 5,
