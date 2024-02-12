@@ -23,6 +23,7 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "eslint": "^8.56.0",
     "mocha": "^8.2.1",
     "msw": "^0.24.2"
   },
@@ -36,7 +37,7 @@
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest"
+      "plugin:jest/recommended"
     ]
   },
   "browserslist": {

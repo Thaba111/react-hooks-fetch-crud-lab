@@ -65,6 +65,28 @@
         "controlled"
       ],
       "correctIndex": 1
+    },
+    {
+      "prompt": "who ",
+      "answers": [
+        "on the low",
+        "on the floor",
+        "on the wall",
+        "on the know"
+      ],
+      "correctIndex": 0,
+      "id": 7
+    },
+    {
+      "prompt": "who ",
+      "answers": [
+        "on the low",
+        "on the floor",
+        "on the wall",
+        "on the know"
+      ],
+      "correctIndex": 0,
+      "id": 8
     }
   ]
 }

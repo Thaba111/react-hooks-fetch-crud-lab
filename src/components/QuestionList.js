@@ -1,20 +1,9 @@
+// QuestionList.js
+
 import React from 'react';
+import QuestionItem from "./QuestionItem";
 
 function QuestionList({ questions, onDeleteQuestion, onUpdateCorrectIndex }) {
-  const handleDelete = async (id) => {
-    try {
-      const response = await fetch(`http://localhost:4000/questions/${id}`, {
-        method: 'DELETE'
-      });
-      if (!response.ok) {
-        throw new Error('Failed to delete question');
-      }
-      onDeleteQuestion(id);
-    } catch (error) {
-      console.error('Error deleting question:', error);
-    }
-  };
-
   const handleCorrectIndexChange = async (id, correctIndex) => {
     try {
       const response = await fetch(`http://localhost:4000/questions/${id}`, {
@@ -36,15 +25,12 @@ function QuestionList({ questions, onDeleteQuestion, onUpdateCorrectIndex }) {
       <h2>Question List</h2>
       <ul>
         {questions.map(question => (
-          <li key={question.id}>
-            {question.prompt}
-            <select value={question.correctIndex} onChange={(e) => handleCorrectIndexChange(question.id, e.target.value)}>
-              {question.answers.map((answer, index) => (
-                <option key={index} value={index}>{answer}</option>
-              ))}
-            </select>
-            <button onClick={() => handleDelete(question.id)}>Delete</button>
-          </li>
+          <QuestionItem
+            key={question.id}
+            question={question}
+            onDeleteQuestion={onDeleteQuestion}
+            onUpdateCorrectIndex={handleCorrectIndexChange}
+          />
         ))}
       </ul>
     </div>
